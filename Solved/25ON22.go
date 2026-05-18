@@ -1,11 +1,12 @@
-package main
+// 2025 Oct Nov Paper 22 Question 8
+package octnov2522
 
 import (
 	"fmt"
 	"math/rand"
 )
 
-func main() {
+func ON2522() {
 	freq := generate()
 	fmt.Println("Below is the freq for each number: ")
 	for _, pair := range freq {
