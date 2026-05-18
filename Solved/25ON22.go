@@ -1,5 +1,5 @@
 // 2025 Oct Nov Paper 22 Question 8
-package octnov2522
+package on2522
 
 import (
 	"fmt"
