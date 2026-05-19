@@ -14,18 +14,59 @@ import (
 )
 
 func ON2523() {
+	//init player 1 and 2 totals
+	player1Total := 0
+	player2Total := 0
 
-	fmt.Println("Hello World")
+	//run the numberGenerator function
 	playerRoll := playerNoGenerator()
+
+	//display the numbers for each player. total 100 times each
+	for i := 0; i < 100; i++ {
+		for j := 0; j < 2; j++ {
+			fmt.Printf("Player %d has number: %d \n", j+1, playerRoll[j][i])
+		}
+
+		//compares the number for player 1 and 2
+		if playerRoll[0][i] > playerRoll[1][i] { //if player 1 wins +2 points to total score
+			player1Total = player1Total + 2
+		} else if playerRoll[0][i] < playerRoll[1][i] { //if player 2 wins +2 points to total score
+			player2Total = player2Total + 2
+		} else { //if its a tie then +1 to player 1 and 2 totals
+			player1Total = player1Total + 1
+			player2Total = player2Total + 1
+		}
+	}
+
+	//if tie it just outputs the score for 1 of them then rolls 1 number as sudden death
+	if player1Total == player2Total {
+		fmt.Printf("Its a Tie with %d points", player1Total)
+		fmt.Printf("Sudden death")
+	}
+
+	//condition to output who is the winner
+	//outputs both winner and loser points too
+
+	if player1Total > player2Total {
+		fmt.Printf("Player 1 Wins with %d points\n", player1Total)
+		fmt.Printf("Player 2 Lost with %d points", player2Total)
+	} else if player2Total > player1Total {
+		fmt.Printf("Player 2 Wins with %d points\n", player2Total)
+		fmt.Printf("Player 1 Lost with %d points", player1Total)
+	}
 
 }
 
 func playerNoGenerator() [][]int {
 	var numberGenerated [][]int
 
-	for k := 1; k <= 2; k++ {
-		for i := 1; i < 100; i++ {
-			numberGenerated[k][i] = rand.Intn(6)
+	//init the slice for 2 players
+	numberGenerated = make([][]int, 2)
+
+	for k := 0; k < 2; k++ {
+		numberGenerated[k] = make([]int, 100) //init the slice for 100 rolls
+		for i := 0; i < 100; i++ {
+			numberGenerated[k][i] = rand.Intn(6) + 1
 		}
 	}
 	return numberGenerated

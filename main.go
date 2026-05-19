@@ -1,7 +1,7 @@
 package main
 
-import on2522 "github.com/90xv/cs2210/Solved"
+import on2523 "github.com/90xv/cs2210/Unsolved"
 
 func main() {
-	on2522.ON2522()
+	on2523.ON2523()
 }
