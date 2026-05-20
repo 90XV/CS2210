@@ -39,11 +39,21 @@ func ON2523() {
 	}
 
 	//if tie it just outputs the score for 1 of them then rolls 1 number as sudden death
-	if player1Total == player2Total {
+	for {
 		fmt.Printf("Its a Tie with %d points", player1Total)
 		fmt.Printf("Sudden death")
-	}
+		player1SD := rand.Intn(6) + 1
+		player2SD := rand.Intn(6) + 1
 
+		if player1SD > player2SD {
+			fmt.Printf("Player 1 wins with number : %d\n", player1SD)
+			break
+		} else if player1SD < player2SD {
+			fmt.Printf("Player 2 wins with number : %d\n", player2SD)
+			break
+		}
+		fmt.Printf("Sudden death was a tie : %d. Rolling again", player1SD)
+	}
 	//condition to output who is the winner
 	//outputs both winner and loser points too
 
@@ -57,14 +67,11 @@ func ON2523() {
 
 }
 
-func playerNoGenerator() [][]int {
-	var numberGenerated [][]int
-
-	//init the slice for 2 players
-	numberGenerated = make([][]int, 2)
+func playerNoGenerator() [2][100]int {
+	// declare a 2D array for 2 players and 100 numbers
+	var numberGenerated [2][100]int
 
 	for k := 0; k < 2; k++ {
-		numberGenerated[k] = make([]int, 100) //init the slice for 100 rolls
 		for i := 0; i < 100; i++ {
 			numberGenerated[k][i] = rand.Intn(6) + 1
 		}
