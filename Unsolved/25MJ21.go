@@ -13,6 +13,7 @@
 // The 1D array Points[] stores the total number of points for each competitor.
 
 // s
+
 package mj2521
 
 import "fmt"
